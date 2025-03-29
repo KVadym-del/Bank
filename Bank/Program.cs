@@ -1,4 +1,5 @@
 ﻿using Bank.Utilities;
+using System.Reflection.Metadata.Ecma335;
 
 public class Account
 {
@@ -11,8 +12,11 @@ public class Account
 
     public void WithdrawFunds(double amount)
     {
-        Balance -= WalletUtils.IsAPositive(amount) ? Balance > amount ? amount : throw new ArgumentException("Not enough money") : throw new ArgumentException("Withdraw value should be positive.");
+        if (!WalletUtils.IsAPositive(amount)) throw new ArgumentException("Withdraw value should be positive.");
+        if (Balance < amount) throw new ArgumentException("Not enough money");
+        Balance -= amount;
     }
+
 
     public void GetBalance()
     {
