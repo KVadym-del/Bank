@@ -27,6 +27,6 @@ public class Account
         myAccount.GetBalance();
 
         myAccount.WithdrawFunds(50.0);
-        myAccount.GetBalance();
+        myAccount.GetBalance();                                               
     }
 }
